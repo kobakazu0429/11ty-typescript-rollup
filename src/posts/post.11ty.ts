@@ -2,7 +2,7 @@ import type { Post } from "../_data/posts";
 
 export const data = {
   pagination: {
-    data: "posts",
+    data: "posts.data",
     alias: "post",
     size: 1,
   },

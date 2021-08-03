@@ -5,6 +5,16 @@
   "repository": "ssh://git@github.com/kobakazu0429/11ty-typescript-rollup.git",
   "author": "kobakazu0429 <kobakazu10@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "build": "NODE_ENV=production run-s build:clear build:ts build:11ty",
+    "lint": "run-s lint:eslint lint:prettier lint:tsc",
+    "build:11ty": "npx @11ty/eleventy",
+    "build:ts": "rollup -c rollup.config.js",
+    "build:clear": "rimraf build _site",
+    "lint:tsc": "tsc --noEmit",
+    "lint:eslint": "eslint \"./src/**/*.ts\" --fix",
+    "lint:prettier": "prettier \"./src/**/*.ts\" --write"
+  },
   "devDependencies": {
     "@11ty/eleventy": "^0.12.1",
     "@kobakazu0429/eslint-config-typescript": "^2.1.0",

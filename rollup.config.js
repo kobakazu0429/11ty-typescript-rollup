@@ -5,10 +5,14 @@ import nodeResolve from "@rollup/plugin-node-resolve";
 import typescript from "rollup-plugin-typescript2";
 import commonjs from "@rollup/plugin-commonjs";
 import json from "@rollup/plugin-json";
+import { babel } from '@rollup/plugin-babel';
 
 const tsFiles = [
   ...glob(
     "./src/**/*.ts"
+  ),
+  ...glob(
+    "./src/posts/*.tsx"
   ),
 ].map(p => path.resolve(path.join(__dirname, p)));
 
@@ -25,6 +29,9 @@ const config = /** @type import("rollup").NormalizedInputOptions */ ({
       preferBuiltins: true,
     }),
     commonjs(),
+    babel({
+      extensions: [".tsx"]
+    }),
     json(),
   ]
 });

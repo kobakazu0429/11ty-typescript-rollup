@@ -1,3 +1,5 @@
+import { renderToString } from "preact-render-to-string";
+import { Header } from "../components/Header";
 import type { Post } from "../_data/posts";
 
 export const data = {
@@ -12,6 +14,10 @@ export const data = {
 };
 
 export const render = function ({ post }: { post: Post }) {
-  return `<h1>${post.title}</h1>
-<p>${post.body}</p>`;
+  return renderToString(
+    <>
+      <Header title={post.title} />
+      <p>{post.body}</p>
+    </>
+  );
 };
